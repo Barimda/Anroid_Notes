@@ -1,12 +1,11 @@
 <resources>
     <string name="app_name">Заметки</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- END TO DO   -->
+    <!--    DEMO DATA   -->
     <string name="demo_data_notes_item_name">Купить продукты</string>
     <string name="demo_data_notes_item_description">Помидоры, Огурцы, салат...</string>
     <string name="demo_data_notes_item_last_update_date">28.11.2021</string>
     <string name="demo_data_notes_item_last_update_time">19:26</string>
+    <!--    END DEMO DATA   -->
     <string name="last_update_text">Обновлено:</string>
     <string name="creation_date_text">Создана:</string>
 </resources>

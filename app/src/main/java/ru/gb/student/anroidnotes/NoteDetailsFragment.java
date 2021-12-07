@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,17 +20,16 @@ public class NoteDetailsFragment extends Fragment {
 
     private static final String ARG_NOTE_ID = "noteID";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
+    private int noteID;
 
     public NoteDetailsFragment() {
         // Required empty public constructor
     }
 
-    public static NoteDetailsFragment newInstance(String noteID) {
+    public static NoteDetailsFragment newInstance(int noteID) {
         NoteDetailsFragment fragment = new NoteDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_NOTE_ID, noteID);
+        args.putInt(ARG_NOTE_ID, noteID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,8 +37,9 @@ public class NoteDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle arguments = getArguments();
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_NOTE_ID);
+            noteID = getArguments().getInt(ARG_NOTE_ID);
         }
     }
 
