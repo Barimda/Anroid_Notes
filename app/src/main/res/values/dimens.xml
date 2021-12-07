@@ -2,4 +2,5 @@
 <resources>
     <dimen name="splashScreenNotesText">45sp</dimen>
     <dimen name="zero">0dp</dimen>
+    <dimen name="menu_header_textSize">24sp</dimen>
 </resources>
