@@ -3,6 +3,7 @@ package ru.gb.student.anroidnotes;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initToolbarAndDrawer();
         Navigation.navigateTo(getSupportFragmentManager(), R.id.notes_list, new NotesListFragment(), NavigationType.ADD_WITHOUT_BACKSTACK);
     }
 
@@ -48,17 +50,19 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
+                int itemID = item.getItemId();
+                switch (itemID){
                     case R.id.menu_item_about:
-                        Navigation.navigateTo(getSupportFragmentManager(), R.id.notes_list, new AboutAppFragment(), NavigationType.ADD_WITH_BACKSTACK);
+                        Navigation.navigateTo(getSupportFragmentManager(),R.id.notes_list, new AboutAppFragment(),NavigationType.ADD_WITH_BACKSTACK);
+                        drawer.closeDrawers();
                         return true;
                     case R.id.menu_item_settings:
-                        Navigation.navigateTo(getSupportFragmentManager(), R.id.notes_list, new SettingsFragment(), NavigationType.ADD_WITH_BACKSTACK);
+                        Navigation.navigateTo(getSupportFragmentManager(),R.id.notes_list, new SettingsFragment(),NavigationType.ADD_WITH_BACKSTACK);
+                        drawer.closeDrawers();
                         return true;
                     case R.id.menu_item_close_app:
                         finish();
