@@ -1,8 +1,10 @@
 package ru.gb.student.anroidnotes;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class NoteDetailsFragment extends Fragment {
 
@@ -52,4 +55,37 @@ public class NoteDetailsFragment extends Fragment {
         inflater.inflate(R.menu.note_details_menu, menu);
 
     }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        new AlertDialog.Builder(getContext())
+                .setTitle("Внимание")
+                .setMessage("Сохранить изменения?")
+                // Из этого окна нельзя выйти кнопкой Back
+                .setCancelable(false)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //TODO make something (save note)
+                        saveChanges();
+                    }
+                })
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //TODO make something (unsave note)
+                        discardChanges();
+                    }
+                })
+                .show();
+    }
+
+    private void saveChanges() {
+    }
+
+    private void discardChanges() {
+    }
+
 }
