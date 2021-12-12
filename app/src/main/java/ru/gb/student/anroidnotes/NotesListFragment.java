@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import ru.gb.student.anroidnotes.frontend.Navigation;
+import ru.gb.student.anroidnotes.frontend.NavigationType;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link NotesListFragment#newInstance} factory method to
@@ -54,11 +57,7 @@ public class NotesListFragment extends Fragment {
     private void navigateToDetails() {
         ConstraintLayout item =  getView().findViewById(R.id.note_item);
         item.setOnClickListener(v-> {
-            NoteDetailsFragment note = new NoteDetailsFragment();
-            getFragmentManager().beginTransaction()
-                    .addToBackStack("")
-                    .add(R.id.notes_list, note)
-                    .commit();
+            Navigation.navigateTo(getFragmentManager(), R.id.notes_list, new NoteDetailsFragment(), NavigationType.ADD_WITH_BACKSTACK);
         });
     }
 

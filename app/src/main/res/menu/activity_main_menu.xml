@@ -13,7 +13,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_item_close_app"
-        android:icon="@android:drawable/ic_menu_delete"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="@string/menu_text_exit"
         app:showAsAction="ifRoom" />
 </menu>

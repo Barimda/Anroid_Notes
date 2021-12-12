@@ -1,18 +1,19 @@
 package ru.gb.student.anroidnotes;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.appcompat.widget.*;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+
+import ru.gb.student.anroidnotes.frontend.Navigation;
+import ru.gb.student.anroidnotes.frontend.NavigationType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startFragmentTransaction()
-                .replace(R.id.notes_list, new NotesListFragment())
-                .commit();
+        Navigation.navigateTo(getSupportFragmentManager(), R.id.notes_list, new NotesListFragment(), NavigationType.ADD_WITHOUT_BACKSTACK);
     }
 
     @Override
@@ -56,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.menu_item_about:
-                        openAboutFragment();
+                        Navigation.navigateTo(getSupportFragmentManager(), R.id.notes_list, new AboutAppFragment(), NavigationType.ADD_WITH_BACKSTACK);
                         return true;
                     case R.id.menu_item_settings:
-                        openSettingsFragment();
+                        Navigation.navigateTo(getSupportFragmentManager(), R.id.notes_list, new SettingsFragment(), NavigationType.ADD_WITH_BACKSTACK);
                         return true;
                     case R.id.menu_item_close_app:
                         finish();
@@ -69,25 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @NonNull
-    private FragmentTransaction startFragmentTransaction() {
-        return getSupportFragmentManager()
-                .beginTransaction();
-    }
-
-    private void openSettingsFragment() {
-
-        startFragmentTransaction()
-                .addToBackStack("")
-                .add(R.id.notes_list, new SettingsFragment()).commit();
-    }
-
-    private void openAboutFragment() {
-        startFragmentTransaction()
-                .addToBackStack("")
-                .add(R.id.notes_list, new NoteDetailsFragment()).commit();
     }
 
 }
