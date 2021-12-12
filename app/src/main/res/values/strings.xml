@@ -8,4 +8,19 @@
     <!--    END DEMO DATA   -->
     <string name="last_update_text">Обновлено:</string>
     <string name="creation_date_text">Создана:</string>
+    <string name="settings_text">Настройки</string>
+    <string name="about_text">О приложении</string>
+    <string name="menu_text_exit">Выход</string>
+
+    <string name="navigation_drawer_open">OPEN</string>
+    <string name="navigation_drawer_close">CLOSE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_about_text">Прилжение заметки версия 0.6</string>
+    <string name="settings_autosave">Автосохранение при закрыти заметки</string>
+    <string name="new_note">Создать заметку</string>
+    <string name="notes">Заметки</string>
+    <string name="attention_text">Внимание</string>
+    <string name="exit_question">Вы действительно хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>

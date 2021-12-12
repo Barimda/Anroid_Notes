@@ -10,6 +10,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import ru.gb.student.anroidnotes.frontend.Navigation;
+import ru.gb.student.anroidnotes.frontend.NavigationType;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +54,13 @@ public class NotesListFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_notes_list, container, false);
     }
 
+    private void navigateToDetails() {
+        ConstraintLayout item =  getView().findViewById(R.id.note_item);
+        item.setOnClickListener(v-> {
+            Navigation.navigateTo(getFragmentManager(), R.id.notes_list, new NoteDetailsFragment(), NavigationType.ADD_WITH_BACKSTACK);
+        });
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -56,5 +68,6 @@ public class NotesListFragment extends Fragment {
         if (arguments != null){
             int noteID = arguments.getInt(ARG_NOTE_ID);
         }
+        navigateToDetails();
     }
 }
